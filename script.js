@@ -1,70 +1,91 @@
-import { API_KEY_0 } from "./keys.js";
+const score = document.getElementById("score");
+const mark = document.getElementById("mark");
+const result = document.getElementById("result");
+const firstNumber = document.getElementById("firstNumber");
+const secondNumber = document.getElementById("secondNumber");
 
-const input = document.querySelector("input");
-const button = document.querySelector("button");
-const cityName = document.querySelector(".city-name");
-const warning = document.querySelector(".warning");
-const photo = document.querySelector(".photo");
-const weather = document.querySelector(".weather");
-const temperature = document.querySelector(".temperature");
-const humidity = document.querySelector(".humidity");
+console.log(score);
+console.log(mark);
+console.log(result);
+console.log(firstNumber);
+console.log(secondNumber);
 
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
-const API_LINK = "https://api.openweathermap.org/data/2.5/weather?q=";
-const API_KEY = API_KEY_0;
-const API_UNITS = "&units=metric";
-
-const getWeather = () => {
-	const city = input.value || "Warsaw";
-	const URL = API_LINK + city + API_KEY + API_UNITS;
-
-	axios
-		.get(URL)
-		.then((res) => {
-			const temp = res.data.main.temp;
-			const hum = res.data.main.humidity;
-			const status = Object.assign({}, ...res.data.weather);
-			const pict = status.id;
-
-			// console.log(status.id);
-
-			cityName.textContent = res.data.name;
-
-			temperature.textContent = `${Math.floor(temp)} °C`;
-			humidity.textContent = `${hum}%`;
-
-			// console.log(res.data.weather[0]);
-			weather.textContent = status.main;
-
-			warning.textContent = "";
-			input.value = "";
-
-			if (status.id >= 200 && status.id < 300) {
-				photo.src = "img/thunderstorm.png";
-			} else if (status.id < 400) {
-				photo.src = "img/drizzle.png";
-			} else if (status.id < 600) {
-				photo.src = "img/rain.png";
-			} else if (status.id < 700) {
-				photo.src = "img/fog.png";
-			} else if (status.id === 800) {
-				photo.src = "img/sun.png";
-			} else if (status.id >= 800 && status.id < 900) {
-				photo.src = "img/cloud.png";
-			} else {
-				photo.src = "img/unknown.png";
-			}
-		})
-		.catch(() => (warning.textContent = "Text the name of the city"));
-};
-
-const enterCheck = (e) => {
-	if (e.key === "Enter") {
-		getWeather();
+function firstCheck() {
+	if (isNaN(parseInt(firstNumber.value))) {
+		result.textContent = "Only numbers!";
+		this.value = "";
 	}
-};
+}
+function secondCheck() {
+	if (isNaN(parseInt(secondNumber.value))) {
+		result.textContent = "Only numbers!";
+		this.value = "";
+	}
+}
 
-input.addEventListener("keyup", enterCheck);
-button.addEventListener("click", getWeather);
-getWeather();
+function addition() {
+	let first = parseInt(firstNumber.value);
+	let second = parseInt(secondNumber.value);
+	if (!isNaN(first) && !isNaN(second)) {
+		score.textContent = first + second;
+		mark.textContent = "+";
+	} else {
+		result.textContent = "Please put some numbers in the given fields!";
+	}
+}
+
+function substraction() {
+	let first = parseInt(firstNumber.value);
+	let second = parseInt(secondNumber.value);
+	if (!isNaN(first) && !isNaN(second)) {
+		score.textContent = first - second;
+		mark.textContent = "-";
+	} else {
+		result.textContent = "Please put some numbers in the given fields!";
+	}
+}
+
+function exponentiation() {
+	let first = parseInt(firstNumber.value);
+	let second = parseInt(secondNumber.value);
+	if (!isNaN(first) && !isNaN(second)) {
+		let result = first;
+		if (second == 0) {
+			result = 1;
+		} else {
+			for (let i = 1; i < second; i++) {
+				result = result * first;
+			}
+			score.textContent = result;
+			mark.textContent = "^";
+		}
+	} else {
+		result.textContent = "Please put some numbers in the given fields!";
+	}
+}
+
+function multiplication() {
+	let first = parseInt(firstNumber.value);
+	let second = parseInt(secondNumber.value);
+	if (!isNaN(first) && !isNaN(second)) {
+		score.textContent = first * second;
+		mark.textContent = "*";
+	} else {
+		result.textContent = "Please put some numbers in the given fields!";
+	}
+}
+
+function division() {
+	let first = parseInt(firstNumber.value);
+	let second = parseInt(secondNumber.value);
+	if (!isNaN(first) && !isNaN(second)) {
+		if (second !== 0) {
+			score.textContent = first / second;
+			mark.textContent = "/";
+		} else {
+			result.textContent = "Second number have to be a greater then 0!";
+		}
+	} else {
+		result.textContent = "Please put some numbers in the given fields!";
+	}
+}

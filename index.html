@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMC School – JavaScript</title>
+    <title>Kalkulator – JavaScript</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
@@ -18,11 +18,24 @@
 <body>
 
 
-    <div>Init</div>
+    <h1>Kalkulator</h1>
 
-
-
-    <script type="module" src="./script.js"></script>
+    <div id="mainMenu">
+        <input onchange="firstCheck()" id="firstNumber" type="text" style="font-size: 22px">
+        <label id="mark" style="font-size: 22px"> &nbsp; </label>
+        <input onchange="secondCheck()" id="secondNumber" type="text" style="font-size: 22px">
+        <label id="equal" style="font-size: 22px"> = </label>
+        <label id="score" style="font-size: 22px"> </label>
+    </div>
+    <div style="margin-top:10px">
+        <button onclick="addition()" id="addition" style="margin-right:10px"> + </button>
+        <button onclick="substraction()" id="substraction" style="margin-right:10px"> - </button>
+        <button onclick="multiplication()" id="multiplication" style="margin-right:10px"> * </button>
+        <button onclick="division()" id="division" style="margin-right:10px"> / </button>
+        <button onclick="exponentiation()" id="exponentiation"> x^ </button>
+    </div>
+    <p id="result" style="color:red; font-style:italic;"></p>
+    <script type="text/javaScript" src="./script.js"></script>
 </body>
 
 </html>
