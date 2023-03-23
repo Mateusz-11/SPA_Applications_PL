@@ -18,7 +18,7 @@
 <body>
 
 
-    <h1>Kalkulator</h1>
+    <h2>Kalkulator</h2>
 
     <div id="mainMenu">
         <input onchange="firstCheck()" id="firstNumber" type="text" style="font-size: 22px">
@@ -35,6 +35,29 @@
         <button onclick="exponentiation()" id="exponentiation"> x^ </button>
     </div>
     <p id="result" style="color:red; font-style:italic;"></p>
+
+    <h2>Kalkulator liczenia odległości wg współrzędnych geograficznych</h2>
+
+    <div id="mainMenu1">
+        <input onchange="firstCheckA()" id="xa" type="text" style="font-size: 22px">
+        <label id="xa-lab" style="font-size: 22px"> xA </label>
+        <input onchange="secondCheckA()" id="ya" type="text" style="font-size: 22px">
+        <label id="ya-lab" style="font-size: 22px"> yA </label>
+    </div>
+    <div id="mainMenu2">
+        <input onchange="firstCheckB()" id="xb" type="text" style="font-size: 22px">
+        <label id="xb-lab" style="font-size: 22px"> xB </label>
+        <input onchange="secondCheckB()" id="yb" type="text" style="font-size: 22px">
+        <label id="yb-lab" style="font-size: 22px"> yB </label>
+    </div>
+    <div style="margin-top:10px">
+        <button onclick="count()" id="count" style="margin-right:10px"> Count length </button>
+    </div>
+    <p id="result2" style="color:green; font-style:italic;"></p>
+
+
+
+    <p id="errormsg" style="color:red; font-style:italic;"></p>
     <script type="text/javaScript" src="./script.js"></script>
 </body>
 

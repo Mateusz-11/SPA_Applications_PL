@@ -4,11 +4,12 @@ const result = document.getElementById("result");
 const firstNumber = document.getElementById("firstNumber");
 const secondNumber = document.getElementById("secondNumber");
 
-console.log(score);
-console.log(mark);
-console.log(result);
-console.log(firstNumber);
-console.log(secondNumber);
+const errorMsg = document.getElementById("errormsg");
+const resultMsg = document.getElementById("result2");
+const xA = document.getElementById("xa");
+const yA = document.getElementById("ya");
+const xB = document.getElementById("xb");
+const yB = document.getElementById("yb");
 
 function firstCheck() {
 	if (isNaN(parseInt(firstNumber.value))) {
@@ -87,5 +88,52 @@ function division() {
 		}
 	} else {
 		result.textContent = "Please put some numbers in the given fields!";
+	}
+}
+
+function firstCheckA() {
+	if (isNaN(parseInt(xA.value))) {
+		errorMsg.textContent = "Only numbers!";
+		this.value = "";
+	}
+}
+function secondCheckA() {
+	if (isNaN(parseInt(yA.value))) {
+		errorMsg.textContent = "Only numbers!";
+		this.value = "";
+	}
+}
+function firstCheckB() {
+	if (isNaN(parseInt(firstNumber.value))) {
+		errorMsg.textContent = "Only numbers!";
+		this.value = "";
+	}
+}
+function secondCheckB() {
+	if (isNaN(parseInt(secondNumber.value))) {
+		errorMsg.textContent = "Only numbers!";
+		this.value = "";
+	}
+}
+
+function count() {
+	let xaNumber = parseInt(xa.value);
+	let yaNumber = parseInt(ya.value);
+	let xbNumber = parseInt(xb.value);
+	let ybNumber = parseInt(yb.value);
+	if (
+		!isNaN(xaNumber) &&
+		!isNaN(yaNumber) &&
+		!isNaN(xbNumber) &&
+		!isNaN(ybNumber)
+	) {
+		let deltaX = xbNumber - xaNumber;
+		let deltaY = ybNumber - yaNumber;
+		// resultMsg.style.color = "yellow";
+		resultMsg.textContent = `Odległość to ${Math.round(
+			(Math.sqrt(deltaX ** 2 + deltaY ** 2) * 73) / 1.852
+		)} mil morskich`;
+	} else {
+		errorMsg.textContent = "Please put some numbers in the given fields!";
 	}
 }
