@@ -18,7 +18,6 @@ function App() {
 				</a>
 				<div>
 					<p>Testing</p>
-					<p>Testing1</p>
 				</div>
 			</header>
 		</div>
