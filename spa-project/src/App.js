@@ -8,6 +8,10 @@ function App() {
 				<img src={logo} className='App-logo' alt='logo' />
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
+				</p>{" "}
+				<img src={logo} className='App-logo' alt='logo' />
+				<p>
+					Edit <code>src/App.js</code> and save to reload.
 				</p>
 				<a
 					className='App-link'
